@@ -1,17 +1,26 @@
 import Head from 'next/head';
+import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
+import Accounts from 'pageComponents/Accounts';
+import GlobalStyle from '../globalStyles';
 
 export default function Home() {
   return (
-    <div>
+    <div className="container flex flex-col root home-page">
       <Head>
         <title>blockbase</title>
-        <meta name="description" content="lightweight ethereum blockchain explorer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        This is blockbase
+      <GlobalStyle />
+
+      <main className="flex flex-grow flex-col blockbase-app px-4">
+        <Navbar />
+
+        <Accounts />
       </main>
+
+      <Footer />
     </div>
   );
 };
