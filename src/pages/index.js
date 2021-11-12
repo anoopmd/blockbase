@@ -1,26 +1,12 @@
-import Head from 'next/head';
-import Navbar from 'components/Navbar';
-import Footer from 'components/Footer';
-import Accounts from 'pageComponents/Accounts';
-import GlobalStyle from '../globalStyles';
+import React, { useEffect } from "react";
+import { useRouter } from 'next/router';
 
 export default function Home() {
-  return (
-    <div className="container flex flex-col root home-page">
-      <Head>
-        <title>blockbase</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  const router = useRouter();
 
-      <GlobalStyle />
+  useEffect(() => {
+    router.push(`/accounts`);
+  }, [])
 
-      <main className="flex flex-grow flex-col blockbase-app px-4">
-        <Navbar />
-
-        <Accounts />
-      </main>
-
-      <Footer />
-    </div>
-  );
+  return null;
 };

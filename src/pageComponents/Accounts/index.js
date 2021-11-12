@@ -11,7 +11,7 @@ const Accounts = () => {
 
     for(let address of ethAccounts) {
       let balance = await web3.eth.getBalance(address);
-      let txCount = await web3.eth.getTransactionCount("0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe");
+      let txCount = await web3.eth.getTransactionCount(address);
 
       accounts.push({
         address: address,
@@ -34,13 +34,13 @@ const Accounts = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       Address
                     </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       Balance
                     </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       TX Count
                     </th>
                   </tr>
@@ -50,7 +50,9 @@ const Accounts = () => {
                     return (
                       <tr key={account.address} className="font-monospace">
                         <td className="px-6 py-1 whitespace-nowrap text-sm">{account.address}</td>
-                        <td className="px-6 py-1 whitespace-nowrap text-sm">{account.balance} ETH</td>
+                        <td className="px-6 py-1 whitespace-nowrap text-sm">
+                          <span className="inline-block text-right" style={{minWidth: '220px'}}>{account.balance}</span> ETH
+                        </td>
                         <td className="px-6 py-1 whitespace-nowrap text-sm">{account.txCount}</td>
                       </tr>
                     );
